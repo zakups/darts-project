@@ -243,12 +243,6 @@ export class ZahleneingabeComponent implements OnInit {
    }
   }
 
-  
-  testklick() : void {
-    this.testaudio.src = "../assets/bg1.mp3"
-    this.testaudio.load();
-    this.testaudio.play();
-}
 
   
 }
