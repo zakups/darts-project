@@ -1,4 +1,12 @@
-$maxwidth : 300px + 6px
+$maxwidth : 100vw
+
+@media screen and (min-width: 500px) 
+    $maxwidth : 306px
+    .zahlenumfeld
+        max-width: $maxwidth !important
+    .anzeige
+        width: $maxwidth !important
+    
 
 .zahlenumfeld 
     background-color: red
@@ -17,6 +25,7 @@ $maxwidth : 300px + 6px
     
 .summenfeld p 
     font-size: 2em
+    height: 100%
     color: white
     font-family: Arial
     margin: 20px 0 20px 0
@@ -25,6 +34,7 @@ $maxwidth : 300px + 6px
     margin-top: 5px
     width: $maxwidth
     display: flex
+    overflow: hidden
 
 .anzeige p 
     margin: 0

@@ -1,10 +1,16 @@
-$kachelbreite : 100px
-$kachelhohe : 100px
+$kachelsize : 100px
+ 
+@media screen and (max-width: 500px) 
+    $kachelsize : calc(100vw / 3 - 2px)
+    .zahl
+        width: $kachelsize !important
+        height: $kachelsize !important
+        
 
 .zahl 
     background-color: #f5f5f5
-    width: $kachelbreite
-    height: $kachelhohe
+    width: $kachelsize
+    height: $kachelsize
     border: 1px solid #d9d9d9
     display: grid
     place-content: center

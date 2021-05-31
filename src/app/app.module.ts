@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ZahleneingabeComponent } from './zahleneingabe/zahleneingabe.component';
 import { ZahlbuttonComponent } from './zahlbutton/zahlbutton.component';
-import { MatchComponent } from './match/match.component';
 import { FrontpageComponent } from './frontpage/frontpage.component';
 
 @NgModule({
