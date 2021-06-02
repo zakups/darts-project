@@ -16,7 +16,7 @@ export class ZahlbuttonComponent implements OnInit {
 
 
   ngOnInit(): void {
-    if (this.nummer == "a") this.nummer = "🠔";
+    if (this.nummer == "a") this.nummer = "🔙";
     if (this.nummer == "b") this.nummer = "✓";
   }
 
