@@ -1,64 +1,65 @@
-
-<div class="anzeige">
-    <div class="links">
-        
-    </div>
-    <div class="mitte">
-        <div class="upper">
-            <div>
-                <p >First to {{maxSets}}</p>
-            </div>
-             <div class="upper_right">
-                <p>Sets</p> <p>Legs</p> <p></p>
-             </div>
+<div class="alles">
+    <div class="anzeige">
+        <div class="links">
+            
         </div>
-        <div class="middle">
-            <div class="innen_links">
-                <div class="name_s1">
-                    <p (dblclick)="setSpielerName(1)">{{s1_name}}</p>
-                    <div class="flagge_s1"></div>
+        <div class="mitte">
+            <div class="upper">
+                <div>
+                    <p >First to {{maxSets}}</p>
                 </div>
-                <div class="name_s2">
-                    <p (dblclick)="setSpielerName(2)">{{s2_name}}</p>
-                    <div class="flagge_s2"></div>
+                 <div class="upper_right">
+                    <p>Sets</p> <p>Legs</p> <p></p>
+                 </div>
+            </div>
+            <div class="middle">
+                <div class="innen_links">
+                    <div class="name_s1">
+                        <p (dblclick)="setSpielerName(1)">{{s1_name}}</p>
+                        <div class="flagge_s1"></div>
+                    </div>
+                    <div class="name_s2">
+                        <p (dblclick)="setSpielerName(2)">{{s2_name}}</p>
+                        <div class="flagge_s2"></div>
+                    </div>
+                </div>
+                <div class="innen_rechts">
+                    <div class="oben"> <p>{{s1_sets}}</p><p>{{s1_legs}}</p><p>{{s1_punkte}}</p></div>
+                    <div class="unten"><p>{{s2_sets}}</p><p>{{s2_legs}}</p><p>{{s2_punkte}}</p></div>
                 </div>
             </div>
-            <div class="innen_rechts">
-                <div class="oben"> <p>{{s1_sets}}</p><p>{{s1_legs}}</p><p>{{s1_punkte}}</p></div>
-                <div class="unten"><p>{{s2_sets}}</p><p>{{s2_legs}}</p><p>{{s2_punkte}}</p></div>
+            <div class="lower">
+                <p (dblclick)="setSpielerName(3)">{{textUnten}}</p>
+            </div>
+            <div *ngIf="s1_hatfinish" class="finishway1">
+                {{s1_name}}: {{s1_finishway}}
+            </div>
+            <div *ngIf="s2_hatfinish" class="finishway2">
+                {{s2_name}}: {{s2_finishway}}
             </div>
         </div>
-        <div class="lower">
-            <p (dblclick)="setSpielerName(3)">{{textUnten}}</p>
-        </div>
-        <div *ngIf="s1_hatfinish" class="finishway1">
-            {{s1_name}}: {{s1_finishway}}
-        </div>
-        <div *ngIf="s2_hatfinish" class="finishway2">
-            {{s2_name}}: {{s2_finishway}}
+        <div class="rechts">
+            <div *ngIf="turn_s1" class="jetzt_s1"><p>▼</p></div>
+            <div *ngIf="!turn_s1" class="jetzt_s2"><p>▼</p></div>
         </div>
     </div>
-    <div class="rechts">
-        <div *ngIf="turn_s1" class="jetzt_s1"><p>▼</p></div>
-        <div *ngIf="!turn_s1" class="jetzt_s2"><p>▼</p></div>
+    
+    <div class="zahlenumfeld">
+        <div class="summenfeld">
+            <p>{{summe}}</p>
+        </div>
+        <app-zahlbutton *ngFor="let i of button_symbole" [nummer]="i" (click)="klicken(i)"></app-zahlbutton>
+       
     </div>
-</div>
-
-<div class="zahlenumfeld">
-    <div class="summenfeld">
-        <p>{{summe}}</p>
-    </div>
-    <app-zahlbutton *ngFor="let i of button_symbole" [nummer]="i" (click)="klicken(i)"></app-zahlbutton>
-   
-</div>
-
-<div class="menu">
-    <div class="soundsymbol">
-        <p *ngIf="!soundStatus" (click)="changeSoundStatus(true)">🔇</p>
-        <p *ngIf="soundStatus" (click)="changeSoundStatus(false)">🔈</p>
-    </div>
-    <div class="soundsymbol2">
-        <p *ngIf="!soundStatusCl" (click)="soundStatusCl = !soundStatusCl">🔇</p>
-        <p *ngIf="soundStatusCl" (click)="soundStatusCl = !soundStatusCl">📢</p>
-    </div>
+    
+    <div class="menu">
+        <div class="soundsymbol">
+            <p *ngIf="!soundStatus" (click)="changeSoundStatus(true)">🔇</p>
+            <p *ngIf="soundStatus" (click)="changeSoundStatus(false)">🔈</p>
+        </div>
+        <div class="soundsymbol2">
+            <p *ngIf="!soundStatusCl" (click)="soundStatusCl = !soundStatusCl">🔇</p>
+            <p *ngIf="soundStatusCl" (click)="soundStatusCl = !soundStatusCl">📢</p>
+        </div>
+    </div>    
 </div>
