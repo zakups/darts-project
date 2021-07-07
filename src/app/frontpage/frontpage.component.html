@@ -2,58 +2,65 @@
 
         <header>
                 <h1 class="headertitle">REAL-DARTS.COM</h1>
-                <div class="burger">
+                <div class="burger" (click)="menu_button_click()">
                         <div class="burgerLine"></div>
                         <div class="burgerLine"></div>
                         <div class="burgerLine"></div>
                 </div>
         </header>
+        <div id="menu_bullets" >
+                <a class="link" href="">Startseite</a>
+                <a class="link" href="">Nutzerberichte</a>
+                <a class="link" href="">Vorteile</a>
+                <a class="link" href="">Vergleich</a>
+        </div>
+        <div id="inhalt">
+                <section >
+                        <h2>Der erste Dartszähler mit integriertem Caller und Fangesängen...</h2>
+                        <div class="linie"></div>
+                        <div class="linie2"></div>
+                        <div class="frontpic">
+                                <h1>Der Dartszähler der Zukunft!</h1>
+                                <a class="button" routerLink="/match">Jetzt direkt ausprobieren</a>
+                        </div>
+                        <div class="linie"></div>
+                        <div class="linie2"></div>
+                </section>
 
-        <section>
-                <h2>Der erste Dartszähler mit integriertem Caller und Fangesängen...</h2>
-                <div class="linie"></div>
-                <div class="linie2"></div>
-                <div class="frontpic">
-                        <h1>Der Dartszähler der Zukunft!</h1>
-                        <a class="button" routerLink="/match">Jetzt direkt ausprobieren</a>
-                </div>
-                <div class="linie"></div>
-                <div class="linie2"></div>
-        </section>
+                <section >
+                        <div class="centerUntereinander">
+                                <h2 class="title">Nimm dir 30 Sekunden Zeit und erfahre mehr:</h2>
+                                <video class="video" width="320" height="240" controls>
+                                        <source src="../../assets/frontpage_assets/trailer.mp4" type="video/mp4">
+                                        <p class="white">Hier folgt ein Video</p>
+                                </video> <br>
+                                <a class="button" routerLink="/match">Jetzt direkt ausprobieren</a>
+                        </div>
+                        <div class="linie"></div>
+                        <div class="linie2"></div>
+                </section>
 
-        <section>
-                <div class="centerUntereinander">
-                        <h2 class="title">Nimm dir 30 Sekunden Zeit und erfahre mehr:</h2>
-                        <video class="video" width="320" height="240" controls>
-                                <source src="../../assets/frontpage_assets/trailer.mp4" type="video/mp4">
-                                <p class="white">Hier folgt ein Video</p>
-                        </video> <br>
-                        <a class="button" routerLink="/match">Jetzt direkt ausprobieren</a>
-                </div>
-                <div class="linie"></div>
-                <div class="linie2"></div>
-        </section>
+                <section > 
+                        <h2 class="title">Wir können dir viel erzählen, aber was sagen die Nutzer?</h2>
 
-        <section>
-                <h2 class="title">Wir können dir viel erzählen, aber was sagen die Nutzer?</h2>
+                        <p class="white"><b>Michael W.</b> schrieb: </p>
+                        <p class="gelb">"Erst war ich skeptisch, dennoch ist es mit Abstand der beste Dartscounter, den ich kenne!"</p>
 
-                <p class="white"><b>Michael W.</b> schrieb: </p>
-                <p class="gelb">"Erst war ich skeptisch, dennoch ist es mit Abstand der beste Dartscounter, den ich kenne!"</p>
+                        <div class="trennLinie"></div>
+                        
+                        <p class="white"><b>Toni M.</b> schrieb: </p>
+                        <p class="gelb">"Echt ne super Seite, um richtiges Stadionfeeling in den Dartskeller zu bekommen. DANKE realdarts"</p>
 
-                <div class="trennLinie"></div>
-                
-                <p class="white"><b>Toni M.</b> schrieb: </p>
-                <p class="gelb">"Echt ne super Seite, um richtiges Stadionfeeling in den Dartskeller zu bekommen. DANKE realdarts"</p>
+                        <div class="centerUntereinander">
+                                <a href="#" class="white"><i>Weitere Erfahrungsberichte...</i></a> 
+                                <a class="button" routerLink="/match">Jetzt direkt ausprobieren</a>
+                        </div> 
+                        
 
-                <div class="centerUntereinander">
-                        <a href="#" class="white"><i>Weitere Erfahrungsberichte...</i></a> 
-                        <a class="button" routerLink="/match">Jetzt direkt ausprobieren</a>
-                </div> 
-                
-
-                <div class="linie"></div>
-                <div class="linie2"></div>
-        </section>
+                        <div class="linie"></div>
+                        <div class="linie2"></div>
+                </section>
+        </div>
 </div>
 
 
