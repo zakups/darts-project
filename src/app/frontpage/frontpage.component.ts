@@ -12,11 +12,10 @@ export class FrontpageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.menu_button_click(); //wegmachen für menu
+    document.getElementById("menu_bullets")!.style.display = "none";
   }
 
   menu_button_click() : void{
-    document.getElementById("menu_bullets")!.style.display = "none";
     this.showing_menu = !this.showing_menu;
 
     if (this.showing_menu) {

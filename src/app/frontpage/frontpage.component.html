@@ -9,13 +9,13 @@
                 </div>
         </header>
         <div id="menu_bullets" >
-                <a class="link" href="">Startseite</a>
-                <a class="link" href="">Nutzerberichte</a>
-                <a class="link" href="">Vorteile</a>
-                <a class="link" href="">Vergleich</a>
+                <a class="link" href="#start" (click)="menu_button_click()">Startseite</a>
+                <a class="link" href="#nutzerberichte" (click)="menu_button_click()">Nutzerberichte</a>
+                <a class="link" href="#" (click)="menu_button_click()">Vorteile</a>
+                <a class="link" href="#" (click)="menu_button_click()">Vergleich</a>
         </div>
         <div id="inhalt">
-                <section >
+                <section id="start">
                         <h2>Der erste Dartszähler mit integriertem Caller und Fangesängen...</h2>
                         <div class="linie"></div>
                         <div class="linie2"></div>
@@ -27,7 +27,7 @@
                         <div class="linie2"></div>
                 </section>
 
-                <section >
+                <section>
                         <div class="centerUntereinander">
                                 <h2 class="title">Nimm dir 30 Sekunden Zeit und erfahre mehr:</h2>
                                 <video class="video" width="320" height="240" controls>
@@ -40,7 +40,7 @@
                         <div class="linie2"></div>
                 </section>
 
-                <section > 
+                <section id="nutzerberichte"> 
                         <h2 class="title">Wir können dir viel erzählen, aber was sagen die Nutzer?</h2>
 
                         <p class="white"><b>Michael W.</b> schrieb: </p>
