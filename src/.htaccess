@@ -1,0 +1,6 @@
+# Permanent URL redirect- by netgrade 
+
+ErrorDocument 404 /404.html
+
+RewriteEngine on
+Redirect 301 /match /

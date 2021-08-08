@@ -4,6 +4,10 @@ $header : #005687
 $gelb : #F2B705
 $gelb_hover : #f5da89
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Mukta&family=Nunito:ital,wght@1,600&family=Ubuntu:wght@500&family=Zen+Tokyo+Zoo&display=swap')
+
+//Wenn in Desktop Mode
 @media screen and (min-width: 500px) 
     $maxwidth : 306px
     .zahlenumfeld
@@ -11,30 +15,58 @@ $gelb_hover : #f5da89
     .anzeige
         width: $maxwidth !important
 
-    
+    .alles
+        display: flex !important
+        align-items: center !important
+        flex-direction: column !important
+        overflow: visible !important //Evtl wegmachen?
+    header
+        display: flex !important
+        align-items: center !important
+        justify-content: space-around !important   
+
 
 .alles 
     background-color: $background
-    width: 100vw
-    height: 100vh
+    //width: 100vw
+    //height: 100vh
+    overflow: hidden //Evtl wegmachen?
+
+header
+    display: none
+    width: 100%
+    background-color: $header
+    margin-bottom: 2%
+    padding-top: 2vh
+    padding-bottom: 2vh
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+    
+header a 
+    text-align: center
+    text-decoration: none
+    color: $gelb
+    font-family: 'Zen Tokyo Zoo', cursive
+    font-size: 1.9rem
+    margin: 10px
+    font-weight: bold
 
 .zahlenumfeld 
     max-width: $maxwidth
     display: flex
     flex-wrap: wrap
-    margin-top: 15px
+    margin-top: 10px
 
 .summenfeld
     background-color: rgb(34, 35, 35)
     width: 100%
     text-align: right
-    padding: 15px 10% 15px
+    padding: 5px 10% 5px
     
 .summenfeld p 
     //height: 100%
     font-size: 2rem
     color: white
-    font-family: Arial
+    font-family: 'Ubuntu', sans-serif
     //margin: 20px 0 20px 0
     margin: 0
     overflow: hidden
@@ -47,7 +79,7 @@ $gelb_hover : #f5da89
 
 .anzeige p 
     margin: 0
-    font-family: Arial
+    font-family: Arial, Helvetica, sans-serif
 
 .upper, .lower
     background-color: rgb(34, 35, 35)
@@ -64,7 +96,7 @@ $gelb_hover : #f5da89
     background-color: rgb(133, 0, 0)
     color: white
     padding: 4px
-    font-family: Arial
+    font-family: Arial, Helvetica, sans-serif
     border-bottom: 1px solid rgb(100, 0, 0)
 
 .mitte
@@ -134,6 +166,8 @@ $gelb_hover : #f5da89
 .jetzt_s1 p, .jetzt_s2 p
     transform: rotate(90deg)
 
+/*  Menü Unten Anfang     */
+
 .menu .soundsymbol, .menu .soundsymbol2
     padding: 4px
     margin-left: 10px
@@ -146,3 +180,18 @@ $gelb_hover : #f5da89
 
 .menu 
     display: flex
+
+button
+    margin: 10px
+    padding: 10px
+    background-color: $gelb
+    border-radius: 10px
+    border: 0
+    color: $background
+    font-family: 'Ubuntu', sans-serif
+    font-weight: bold
+
+button:hover
+    background-color: $gelb_hover
+    cursor: pointer
+/*  Menü Unten Anfang     */

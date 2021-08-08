@@ -34,8 +34,10 @@ export class ZahleneingabeComponent implements OnInit {
   turn_s1 = true;           //Wer ist dran, SP1? 
 
   //Sound
-  soundStatus = false;      //Background Music Status
+  bgSoundStatus = false;      //Background Music Status
+  bgSoundStatusDisplay = ["Fangesänge an", "Fangesänge aus"];
   soundStatusCl = true;     //Callout Music Status
+  soundStatusClDisplay = ["Caller an", "Caller aus"];
   bgaudio = new Audio();    
   claudio = new Audio();
 
@@ -47,14 +49,14 @@ export class ZahleneingabeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.bgToggleSoundStatus();
   }
 
-  changeSoundStatus(status : boolean) : void {
-    this.soundStatus = status;
+  bgToggleSoundStatus() : void {
+    this.bgSoundStatus = !this.bgSoundStatus;
 
     //Backgroudn Sound abspielen
-    if (this.soundStatus) {
+    if (this.bgSoundStatus) {
       this.bgaudio.src = "../assets/bg1.mp3"
       this.bgaudio.play();
       console.log("Sound gespielt");

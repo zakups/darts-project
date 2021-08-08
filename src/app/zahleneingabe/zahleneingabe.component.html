@@ -1,8 +1,9 @@
 <div class="alles">
+    <header>
+        <a (click)="bgaudio.pause()" routerLink="/" routerLinkActive="active">REAL-DARTS.COM</a>
+    </header>
     <div class="anzeige">
-        <div class="links">
-            
-        </div>
+        <div class="links"></div>
         <div class="mitte">
             <div class="upper">
                 <div>
@@ -53,13 +54,15 @@
     </div>
     
     <div class="menu">
-        <div class="soundsymbol">
-            <p *ngIf="!soundStatus" (click)="changeSoundStatus(true)">🔇</p>
+        <!-- <div class="soundsymbol">
+            <p *ngIf="!soundStatus" (click)="changeSoundStatus(true)">🔇</p> (changeSoundStatus wurde zu bgToggleSoundStatus geändert)
             <p *ngIf="soundStatus" (click)="changeSoundStatus(false)">🔈</p>
         </div>
         <div class="soundsymbol2">
             <p *ngIf="!soundStatusCl" (click)="soundStatusCl = !soundStatusCl">🔇</p>
             <p *ngIf="soundStatusCl" (click)="soundStatusCl = !soundStatusCl">📢</p>
-        </div>
+        </div> -->
+        <button class="soundbutton" (click)="bgToggleSoundStatus()">{{bgSoundStatusDisplay[bgSoundStatus ? 1 : 0]}}</button>
+        <button class="soundbutton" (click)="soundStatusCl = !soundStatusCl">{{soundStatusClDisplay[soundStatusCl ? 1 : 0]}}</button>
     </div>    
 </div>

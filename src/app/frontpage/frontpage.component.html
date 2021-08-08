@@ -11,8 +11,8 @@
         <div id="menu_bullets" >
                 <a class="link" href="#start" (click)="menu_button_click()">Startseite</a>
                 <a class="link" href="#nutzerberichte" (click)="menu_button_click()">Nutzerberichte</a>
-                <a class="link" href="#" (click)="menu_button_click()">Vorteile</a>
-                <a class="link" href="#" (click)="menu_button_click()">Vergleich</a>
+                <!-- <a class="link" href="#" (click)="menu_button_click()">Vorteile</a> -->
+                <a class="link" href="#vergleich" (click)="menu_button_click()">Vergleich</a>
         </div>
         <div id="inhalt">
                 <section id="start">
@@ -52,19 +52,25 @@
                         <p class="gelb">"Echt ne super Seite, um richtiges Stadionfeeling in den Dartskeller zu bekommen. DANKE realdarts"</p>
 
                         <div class="centerUntereinander">
-                                <a href="#" class="white"><i>Weitere Erfahrungsberichte...</i></a> 
+                                <a (click)="tempVerweis()" href="#" class="white"><i>Weitere Erfahrungsberichte...</i></a> 
                                 <a class="button" routerLink="/match">Jetzt direkt ausprobieren</a>
                         </div> 
                 </section>
+
                 <div class="linie"></div>
                 <div class="linie2"></div>
+
+                <section id="vergleich">
+                        <img src="../../assets/frontpage_assets/vergleich_konkurrenz.png" alt="Der Vergleich zur Konkurrenz" /> <br /> <br />
+                        <a class="button" routerLink="/match">Jetzt direkt ausprobieren</a>
+                </section>
         </div>
-        <footer>
+        <footer id="footer">
                 <p class="white">&copy; 2021 real-darts.com </p>
                 <ul>    
-                        <li><a href="#">Kontakt</a></li>
-                        <li><a href="#">Datenschutz</a></li>
-                        <li><a href="#">Impressum</a></li>
+                        <li><a routerLink="/impressum" routerLinkActive="active">Kontakt</a></li>
+                        <li><a routerLink="/impressum" routerLinkActive="active">Datenschutz</a></li>
+                        <li><a routerLink="/impressum" routerLinkActive="active">Impressum</a></li>
                 </ul>
         </footer>
 </div>

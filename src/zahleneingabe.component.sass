@@ -1,0 +1,197 @@
+$maxwidth : 100vw
+$background : #003F63
+$header : #005687
+$gelb : #F2B705
+$gelb_hover : #f5da89
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Mukta&family=Nunito:ital,wght@1,600&family=Ubuntu:wght@500&family=Zen+Tokyo+Zoo&display=swap')
+
+//Wenn in Desktop Mode
+@media screen and (min-width: 500px) 
+    $maxwidth : 306px
+    .zahlenumfeld
+        max-width: $maxwidth !important
+    .anzeige
+        width: $maxwidth !important
+
+    .alles
+        display: flex !important
+        align-items: center !important
+        flex-direction: column !important
+        overflow: visible !important //Evtl wegmachen?
+    header
+        display: flex !important
+        align-items: center !important
+        justify-content: space-around !important   
+
+
+.alles 
+    background-color: $background
+    //width: 100vw
+    //height: 100vh
+    overflow: hidden //Evtl wegmachen?
+
+header
+    display: none
+    width: 100%
+    background-color: $header
+    margin-bottom: 2%
+    padding-top: 2vh
+    padding-bottom: 2vh
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+    
+header a 
+    text-align: center
+    text-decoration: none
+    color: $gelb
+    font-family: 'Zen Tokyo Zoo', cursive
+    font-size: 1.9rem
+    margin: 10px
+    font-weight: bold
+
+.zahlenumfeld 
+    max-width: $maxwidth
+    display: flex
+    flex-wrap: wrap
+    margin-top: 10px
+
+.summenfeld
+    background-color: rgb(34, 35, 35)
+    width: 100%
+    text-align: right
+    padding: 5px 10% 5px
+    
+.summenfeld p 
+    //height: 100%
+    font-size: 2rem
+    color: white
+    font-family: 'Ubuntu', sans-serif
+    //margin: 20px 0 20px 0
+    margin: 0
+    overflow: hidden
+
+.anzeige
+    padding-top: 5px
+    width: $maxwidth
+    display: flex
+    overflow: hidden
+
+.anzeige p 
+    margin: 0
+    font-family: Arial, Helvetica, sans-serif
+
+.upper, .lower
+    background-color: rgb(34, 35, 35)
+    color: white
+    /* padding: 10px */
+    display: flex
+    padding: 4px
+    max-height: 30px
+.lower p 
+    font-size: 0.92em
+    cursor: pointer
+.finishway1, .finishway2
+    font-size: 0.92em
+    background-color: rgb(133, 0, 0)
+    color: white
+    padding: 4px
+    font-family: Arial, Helvetica, sans-serif
+    border-bottom: 1px solid rgb(100, 0, 0)
+
+.mitte
+    width: 100%
+
+.upper div 
+    width: 50%
+
+.upper_right
+    display: flex
+
+.upper_right p 
+    width: 33%
+
+.middle
+    display: flex
+    width: 100%
+
+.innen_links
+    width: 50%
+
+.innen_rechts
+    width: 50%
+    background-color: rgb(40,174,27)
+    color: white
+    
+.oben, .unten
+    display: flex
+    justify-content: space-around
+    padding-top: 4px
+    padding-bottom: 4px
+.innen_rechts p 
+    width: 20%
+
+.name_s1
+    background-color: rgb(248, 248, 245)
+    padding: 4px
+    border-bottom: 1px solid #e0e0e0
+    cursor: pointer
+
+.name_s2
+    background-color: rgb(248, 248, 245)
+    padding: 4px
+    cursor: pointer
+
+.finish_s1
+    background-color: rgb(133, 0, 0)
+    color: white
+    margin-top: 30px
+    padding: 4px 2px 4px 2px
+.finish_s2
+    background-color: rgb(133, 0, 0)
+    color: white
+    padding: 4px 2px 4px 2px
+
+.jetzt_s1, .jetzt_s2
+    background-color: rgb(133, 0, 0)
+    color: white
+    padding: 4px
+    
+
+.jetzt_s1
+    margin-top: 30px
+.jetzt_s2
+    margin-top: 55px
+    
+.jetzt_s1 p, .jetzt_s2 p
+    transform: rotate(90deg)
+
+/*  Menü Unten Anfang     */
+
+.menu .soundsymbol, .menu .soundsymbol2
+    padding: 4px
+    margin-left: 10px
+    cursor: pointer
+    width: 50px
+     -ms-user-select: None
+    -moz-user-select: None
+    -webkit-user-select: None
+    user-select: None
+
+.menu 
+    display: flex
+
+button
+    margin: 10px
+    padding: 10px
+    background-color: $gelb
+    border-radius: 10px
+    border: 0
+    color: $background
+    font-family: 'Ubuntu', sans-serif
+    font-weight: bold
+
+button:hover
+    background-color: $gelb_hover
+    cursor: pointer
+/*  Menü Unten Anfang     */

@@ -21,10 +21,15 @@ export class FrontpageComponent implements OnInit {
     if (this.showing_menu) {
       document.getElementById("menu_bullets")!.style.display = "flex";
       document.getElementById("inhalt")!.style.display = "none";
+      document.getElementById("footer")!.style.display = "none";
     } else {
       document.getElementById("menu_bullets")!.style.display = "none";
       document.getElementById("inhalt")!.style.display = "block";
+      document.getElementById("footer")!.style.display = "block";
     }
-   
+  }
+
+  tempVerweis() : void {
+    alert("Hier folgen demnächst weitere Erfahrungsberichte. Danke für Deine Geduld.");
   }
 }
