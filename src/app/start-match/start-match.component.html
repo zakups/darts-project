@@ -1,0 +1,45 @@
+<div id="alles">
+
+    <header>
+        <a routerLink="/" routerLinkActive="active">REAL-DARTS.COM</a>
+    </header>
+
+    <h1>Wie viele Spieler?</h1>
+    <div id="halter">
+        <div id="links" (click)="changePlayerAmount(1)"><p>1</p></div>
+        <div id="rechts" (click)="changePlayerAmount(2)"><p>2</p></div>
+    </div>
+    <input #playerAmount type="hidden" id="plAmount" value="{{spielerAnzahl}}"/> 
+    <div class="gruppe">
+        <h2>Spielername: </h2>
+        <input #name1 type="text" name="sp1_name" value="Spieler 1"/>
+    </div>
+    <div id="sp2_input" class="gruppe" >
+        <h2>Spielername: </h2>
+        <input #name2 type="text" name="sp2_name" value="Spieler 2"/>
+    </div>
+
+    <div class="gruppe">
+        <h2>Matchbezeichnung: </h2>
+        <input #bezeichnung type="text" name="sp1_name" value="2021 World Championship - Round 1"/>
+    </div>
+
+    <div class="gruppe">
+        <h2>Spielmodus:</h2>
+        <input #spielmodus id="klein" type="text" name="spielmodus" value="501"/>
+    </div>
+
+    <div class="gruppe">
+        <h2>Anzahl Sets:</h2>
+        <input #sets id="klein" type="number" name="anzahlSets" min="1" max="8" value="2" />
+    </div>
+
+    <div class="gruppe">
+        <h2>Anzahl Legs:</h2>
+        <input #legs id="klein" type="number" name="anzahlLegs" min="1" max="8" value="3" />
+    </div>
+
+    <p class="error" *ngIf="showError">Eines oder mehrere Eingabefelder haben fehlerhafte Inhalte für eine erfolgreiche Darts-Partie!</p>
+    <button (click)="startGame(playerAmount.value, name1.value, name2.value, bezeichnung.value, spielmodus.value, sets.value, legs.value)">LOS GEHTS!</button>
+
+</div>

@@ -1,4 +1,4 @@
-<div class="alles">
+<div id="alles">
     <header>
         <a (click)="bgaudio.pause()" routerLink="/" routerLinkActive="active">REAL-DARTS.COM</a>
     </header>
@@ -19,14 +19,14 @@
                         <p (dblclick)="setSpielerName(1)">{{s1_name}}</p>
                         <div class="flagge_s1"></div>
                     </div>
-                    <div class="name_s2">
+                    <div class="name_s2" *ngIf="anzahlSpieler == 2">
                         <p (dblclick)="setSpielerName(2)">{{s2_name}}</p>
                         <div class="flagge_s2"></div>
                     </div>
                 </div>
                 <div class="innen_rechts">
                     <div class="oben"> <p>{{s1_sets}}</p><p>{{s1_legs}}</p><p>{{s1_punkte}}</p></div>
-                    <div class="unten"><p>{{s2_sets}}</p><p>{{s2_legs}}</p><p>{{s2_punkte}}</p></div>
+                    <div class="unten" *ngIf="anzahlSpieler == 2"><p>{{s2_sets}}</p><p>{{s2_legs}}</p><p>{{s2_punkte}}</p></div>
                 </div>
             </div>
             <div class="lower">
@@ -47,6 +47,7 @@
     
     <div class="zahlenumfeld">
         <div class="summenfeld">
+            <img (click)="settingsClicked()" src="../../assets/match/settings_icon.png" id="settings_icon" alt="Einstellungen" />
             <p>{{summe}}</p>
         </div>
         <app-zahlbutton *ngFor="let i of button_symbole" [nummer]="i" (click)="klicken(i)"></app-zahlbutton>
@@ -65,4 +66,14 @@
         <button class="soundbutton" (click)="bgToggleSoundStatus()">{{bgSoundStatusDisplay[bgSoundStatus ? 1 : 0]}}</button>
         <button class="soundbutton" (click)="soundStatusCl = !soundStatusCl">{{soundStatusClDisplay[soundStatusCl ? 1 : 0]}}</button>
     </div>    
+
 </div>
+
+<div id="gewonnenscreen">
+    <h1>{{winnerName}} hat gewonnen!</h1>
+    <button class="soundbutton" (click)="backToMenu()">Zurück zum Menü</button>
+</div>
+
+<app-start-match *ngIf="showSettings" (someEvent)="gameStarted($event)">
+
+</app-start-match>

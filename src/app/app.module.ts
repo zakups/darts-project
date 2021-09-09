@@ -9,6 +9,7 @@ import { ZahleneingabeComponent } from './zahleneingabe/zahleneingabe.component'
 import { ZahlbuttonComponent } from './zahlbutton/zahlbutton.component';
 import { FrontpageComponent } from './frontpage/frontpage.component';
 import { ImpressumComponent } from './impressum/impressum.component';
+import { StartMatchComponent } from './start-match/start-match.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ImpressumComponent } from './impressum/impressum.component';
     ZahleneingabeComponent,
     ZahlbuttonComponent,
     FrontpageComponent,
-    ImpressumComponent
+    ImpressumComponent,
+    StartMatchComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +27,7 @@ import { ImpressumComponent } from './impressum/impressum.component';
       {path: 'match', component: ZahleneingabeComponent},
       {path: 'impressum', component: ImpressumComponent},
       {path: '', component: FrontpageComponent},
+      {path: 'startmatch', component: StartMatchComponent},
       //{path: '**', component: PageNotFoundComponentComponent}
     ]),
   ],

@@ -7,6 +7,11 @@ $gelb_hover : #f5da89
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap')
 @import url('https://fonts.googleapis.com/css2?family=Mukta&family=Nunito:ital,wght@1,600&family=Ubuntu:wght@500&family=Zen+Tokyo+Zoo&display=swap')
 
+//font-family: 'Mukta', sans-serif
+//font-family: 'Nunito', sans-serif
+//font-family: 'Ubuntu', sans-serif
+//font-family: 'Zen Tokyo Zoo', cursive
+
 //Wenn in Desktop Mode
 @media screen and (min-width: 500px) 
     $maxwidth : 306px
@@ -15,7 +20,7 @@ $gelb_hover : #f5da89
     .anzeige
         width: $maxwidth !important
 
-    .alles
+    #alles
         display: flex !important
         align-items: center !important
         flex-direction: column !important
@@ -26,7 +31,7 @@ $gelb_hover : #f5da89
         justify-content: space-around !important   
 
 
-.alles 
+#alles 
     background-color: $background
     //width: 100vw
     //height: 100vh
@@ -60,7 +65,12 @@ header a
     background-color: rgb(34, 35, 35)
     width: 100%
     text-align: right
-    padding: 5px 10% 5px
+    padding: 5px 10% 5px 5px
+    display: flex
+    justify-content: space-between
+    flex-direction: row
+    align-items: center
+
     
 .summenfeld p 
     //height: 100%
@@ -70,6 +80,12 @@ header a
     //margin: 20px 0 20px 0
     margin: 0
     overflow: hidden
+
+#settings_icon 
+    width: 30px
+    height: 30px
+#settings_icon:hover
+    cursor: pointer
 
 .anzeige
     padding-top: 5px
@@ -180,6 +196,7 @@ header a
 
 .menu 
     display: flex
+    justify-content: center
 
 button
     margin: 10px
@@ -194,4 +211,27 @@ button
 button:hover
     background-color: $gelb_hover
     cursor: pointer
-/*  Menü Unten Anfang     */
+/*  Menü Unten Ende     */
+
+/*  Gewonnen Anfang     */
+#gewonnenscreen
+    display: none
+    color: $gelb
+    font-family: 'Mukta', sans-serif
+    position: absolute
+    top: 0
+    left: 0
+    height: 100vh
+    width: 100%
+    background-color: $background
+    z-index: 2
+    justify-content: space-around
+    align-items: center
+    flex-direction: column
+#gewonnenscreen button
+    font-size: 1.3rem
+#gewonnenscreen h1 
+    font-size: 3rem
+    text-align: center
+
+/*  Gewonnen Ende     */

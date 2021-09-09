@@ -7,17 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./zahleneingabe.component.sass']
 })
 
-
 export class ZahleneingabeComponent implements OnInit {
   //Allgemeine Einstellungen
   summe = "0";
   startPunkte = 501;
   maxLegs = 3;
-  maxSets = 3;
+  maxSets = 1;
   textUnten = "2021 World Championship - Round 1";
   public button_symbole = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "0", "b"];
+  showSettings = true;
 
   //Spieler Eigenschaften und Einstellungen
+  anzahlSpieler = 2;
   s1_name = "Spieler 1";
   s2_name = "Spieler 2";
   s1_punkte = this.startPunkte;
@@ -30,6 +31,7 @@ export class ZahleneingabeComponent implements OnInit {
   s2_hatfinish = false;
   s1_finishway = "-1";
   s2_finishway = "-1";
+  winnerName = "Keiner"
 
   turn_s1 = true;           //Wer ist dran, SP1? 
 
@@ -49,14 +51,18 @@ export class ZahleneingabeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.bgToggleSoundStatus();
+    
   }
 
   bgToggleSoundStatus() : void {
     this.bgSoundStatus = !this.bgSoundStatus;
+    this.setSoundStatus(this.bgSoundStatus);
+  }
 
+  setSoundStatus(x : boolean) {
+    this.bgSoundStatus = x;
     //Backgroudn Sound abspielen
-    if (this.bgSoundStatus) {
+    if (x) {
       this.bgaudio.src = "../assets/bg1.mp3"
       this.bgaudio.play();
       console.log("Sound gespielt");
@@ -154,28 +160,28 @@ export class ZahleneingabeComponent implements OnInit {
     }
 
     //Check Winner End
-    if (this.s1_sets == this.maxSets) {
-      this.s1_legs = 0;
-      this.s2_legs = 0;
-      this.s1_punkte = this.startPunkte;
-      this.s2_punkte = this.startPunkte;
-      this.s1_sets = 0;
-      this.s2_sets = 0;
-      this.textUnten = this.s1_name + " hat gewonnen!";
-      this.s1_hatfinish = false;
-      this.s2_hatfinish = false;
+    if (this.s1_sets == this.maxSets) this.winnerName = this.s1_name;
+    if (this.s2_sets == this.maxSets) this.winnerName = this.s2_name;
+
+    if (this.s1_sets == this.maxSets || this.s2_sets == this.maxSets) {
+      this.resetGame();
+
+      document.getElementById("gewonnenscreen")!.style.display = "flex";
+      //this.bgaudio.pause();
     }
-    if (this.s2_sets == this.maxSets) {
-      this.s1_legs = 0;
-      this.s2_legs = 0;
-      this.s1_punkte = this.startPunkte;
-      this.s2_punkte = this.startPunkte;
-      this.s1_sets = 0;
-      this.s2_sets = 0;
-      this.textUnten = this.s2_name + " hat gewonnen!";
-      this.s1_hatfinish = false;
-      this.s2_hatfinish = false;
-    }
+
+  }
+
+  resetGame() {
+    this.s1_legs = 0;
+    this.s2_legs = 0;
+    this.s1_punkte = this.startPunkte;
+    this.s2_punkte = this.startPunkte;
+    this.s1_sets = 0;
+    this.s2_sets = 0;
+    this.s1_hatfinish = false;
+    this.s2_hatfinish = false;
+    this.turn_s1 = true;
   }
 
 
@@ -201,7 +207,10 @@ export class ZahleneingabeComponent implements OnInit {
     else this.summe = this.summe + nr;
   }
 
-
+  backToMenu() : void {
+    document.getElementById("gewonnenscreen")!.style.display = "none";
+    this.settingsClicked();
+  }
 
   submit(sum : string) : void {
     let xx: number = +sum;
@@ -223,12 +232,28 @@ export class ZahleneingabeComponent implements OnInit {
       }
       this.playSound(xx);
       this.checkForStatus();
-      this.turn_s1 = !this.turn_s1;
+      if (this.anzahlSpieler != 1) this.turn_s1 = !this.turn_s1;
    } else {
     this.falscheEingabe();
    }
   }
 
+  gameStarted(x : any) {
+    this.showSettings = !this.showSettings;
+    this.resetGame();
+    this.anzahlSpieler = x[0];
+    this.s1_name = x[1];
+    this.s2_name = x[2];
+    this.textUnten = x[3];
+    this.startPunkte = x[4];
+    this.maxSets = x[5];
+    this.maxLegs = x[6];
+    this.setSoundStatus(true);
+  }
 
+  settingsClicked() {
+    this.setSoundStatus(false);
+    this.showSettings = true;
+  }
   
 }
