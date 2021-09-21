@@ -16,6 +16,7 @@ export class ZahleneingabeComponent implements OnInit {
   textUnten = "2021 World Championship - Round 1";
   public button_symbole = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "0", "b"];
   showSettings = true;
+  justUpped = false;
 
   //Spieler Eigenschaften und Einstellungen
   anzahlSpieler = 2;
@@ -32,6 +33,7 @@ export class ZahleneingabeComponent implements OnInit {
   s1_finishway = "-1";
   s2_finishway = "-1";
   winnerName = "Keiner"
+  s1_started = true;
 
   turn_s1 = true;           //Wer ist dran, SP1? 
 
@@ -42,6 +44,8 @@ export class ZahleneingabeComponent implements OnInit {
   soundStatusClDisplay = ["Caller an", "Caller aus"];
   bgaudio = new Audio();    
   claudio = new Audio();
+  requiereAudio = new Audio();
+  requiereNumberCallout = new Audio();
 
   //Finish Ways
   public finish = ["T20 T20 Bull", "-1", "-1", "T20 T19 Bull", "-1", "-1", "T20 T18 Bull", "-1", "-1", "T20 T17 Bull", "T20 T20 D20", "-1", "T20 T20 D19", "T20 T19 D20", "T20 T20 D18", "T20 T19 D19", "T20 T18 D20", "T20 T19 D18", "T20 T20 D16", "T20 T17 D20", "T20 T18 D18", "T20 T19 D16", "T20 T16 D20", "T19 T18 D18", "T20 T18 D16", "T20 T15 D20", "T18 T18 D18", "T20 T17 D16", "T20 T14 D20", "T17 T18 D18", "T20 T20 D10", "T19 T14 D20", "T20 T18 D12", "T19 T20 D10", "T20 T20 D8", "T17 T20 D12", "T20 T14 D16", "T20 T11 D20", "T20 T12 D18", "T20 T17 D10", "T20 20 Bull", "T19 T12 D18", "T18 T14 D16", "T20 T17 D8", "T19 19 Bull", "25 T20 D20", "T20 14 Bull", "T19 T10 D18", "T18 T12 D16", "T20 T7 D20", "T20 20 D20", "T20 19 D20", "T20 18 D20", "T20 17 D20", "T20 16 D20", "T20 15 D20", "T20 14 D20", "T20 13 D20", "T20 20 D16", "T20 19 D16", "T20 18 D16", "T20 17 D16", "T20 16 D16", "T19 Bull", "T20 10 D18", "T20 13 D16", "T18 Bull", "T20 3 D20", "T20 10 D16", "T17 Bull", "T20 D20", "T20 7 D16", "T20 D19", "T19 D20", "T20 D18", "T19 D19", "T18 D20", "T19 D18", "T20 D16", "T17 D20", "T18 D18", "T19 D16", "T16 D20", "T17 D18", "T18 D16", "T15 D20", "T20 D12", "T17 D16", "T14 D20", "T15 D18", "T20 D10", "T13 D20", "T18 D12", "T19 D10", "T20 D8", "T17 D12", "T18 D10", "T19 D8", "T12 D18", "T17 D10", "T10 D20", "T13 D15", "T20 D4", "T17 D8", "T10 D18", "25 D20", "T16 D8", "T13 D12", "T10 D16", "25 D18", "20 D20", "19 D20", "18 D20", "17 D20", "16 D20", "15 D20", "14 D20", "13 D20", "20 D16", "19 D16", "18 D16", "17 D16", "16 D16", "15 D16", "6D 20", "13 D16", "12 D16", "11 D16", "10 D16", "9 D16", "D20", "7 D16", "D19", "5 D16", "D18", "3 D16", "D17", "17 D8", "D16", "15 D8", "D15", "13 D8", "D14", "11 D8", "D13", "9 D8", "D12", "7 D8", "D11", "5 D8", "D10", "3 D8", "D9", "1 D8", "D8", "7 D4", "D7", "5 D4", "D6", "3 D4", "D5", "1 D4", "D4", "3 D2", "D3", "1 D2", "D2", "1 D2", "D1"];
@@ -71,22 +75,21 @@ export class ZahleneingabeComponent implements OnInit {
     }
   }
 
-  playSound(i : number) : void {
-
-    if (this.soundStatusCl) {
-      /* if (i == 180) {
-        this.claudio.src = "../assets/180.mp3";
-        this.claudio.play();
-      } */
-      try {
-        this.claudio.src = "../assets/" + i + ".wav";
-        this.claudio.play();
-        console.log("Sound played of number " + i);
-      } catch (error) { //Try Catch funktioniert nicht, bei nicht existierender Datei standart 404 Fehler-Meldung 
-        console.log("Sound of number " + i + " not found");
-        console.log(error);
+  playSoundPromise(i : number) {
+    return new Promise(res=>{
+      if (this.soundStatusCl) {
+        try {
+          this.claudio.src = "../assets/" + i + ".wav";
+          this.claudio.play();
+          console.log("Sound played of number " + i);
+          this.claudio.onended = res;
+        } catch (error) { //Try Catch funktioniert nicht, bei nicht existierender Datei standart 404 Fehler-Meldung 
+          console.log("Sound of number " + i + " not found");
+          console.log(error);
+          this.claudio.onended = res;
+        }
       }
-    }
+    });
   }
 
   getFinishWay(index : any) : string {
@@ -114,6 +117,33 @@ export class ZahleneingabeComponent implements OnInit {
     }
   }
 
+  triggerRequiereCallout() {
+    return new Promise(res=>{
+      if (this.s1_hatfinish && this.turn_s1 || this.s1_hatfinish && this.anzahlSpieler == 1) { //!this.turn_s1, da gewechselt wird bevor Ton angesagt wird 
+        this.requiereAudio.src = "../assets/match/player1_requieres.wav";
+        this.requiereAudio.play();
+      }
+      if (this.s2_hatfinish && !this.turn_s1) { //!this.turn_s1, da gewechselt wird bevor Ton angesagt wird 
+        this.requiereAudio.src = "../assets/match/player2_requieres.wav";
+        this.requiereAudio.play();
+      }
+      this.requiereAudio.onended = res;
+    });
+  }
+
+  triggerRequiereNumberCallout() {
+    return new Promise(res=>{
+        try {
+          this.requiereNumberCallout.play();
+        } catch (error) {
+          console.log("Sound of number " + this.s1_punkte + " not found");
+          console.log(error);
+        }
+        this.requiereAudio.onended = res;
+    });
+  }
+  
+
   checkForStatus() : void {
     //Check Alter Status unten
     if (this.textUnten.charAt(this.textUnten.length-1) == "!") this.textUnten = "2021 World Championship - Round 1";
@@ -133,8 +163,11 @@ export class ZahleneingabeComponent implements OnInit {
       this.s2_hatfinish = false;
     }
 
+
     //Check for win
     if (this.s1_punkte == 0) {
+      this.justUpped = true;
+      this.s1_started = !this.s1_started;
       this.s1_legs++;
       this.s1_punkte = this.startPunkte;
       this.s2_punkte = this.startPunkte;
@@ -147,6 +180,8 @@ export class ZahleneingabeComponent implements OnInit {
       this.s2_hatfinish = false;
     }
     if (this.s2_punkte == 0) {
+      this.justUpped = true;
+      this.s1_started = !this.s1_started;
       this.s2_legs++;
       this.s2_punkte = this.startPunkte;
       this.s1_punkte = this.startPunkte;
@@ -173,6 +208,7 @@ export class ZahleneingabeComponent implements OnInit {
   }
 
   resetGame() {
+    this.s1_started = true;
     this.s1_legs = 0;
     this.s2_legs = 0;
     this.s1_punkte = this.startPunkte;
@@ -212,7 +248,7 @@ export class ZahleneingabeComponent implements OnInit {
     this.settingsClicked();
   }
 
-  submit(sum : string) : void {
+  async submit(sum : string) {
     let xx: number = +sum;
    if (xx >= 0 && xx <= 180) {
       //Korrekt
@@ -230,9 +266,25 @@ export class ZahleneingabeComponent implements OnInit {
         }
         this.s2_punkte -=xx; 
       }
-      this.playSound(xx);
+
       this.checkForStatus();
+      
       if (this.anzahlSpieler != 1) this.turn_s1 = !this.turn_s1;
+      if (this.justUpped && this.anzahlSpieler != 1) {
+        this.turn_s1 = this.s1_started;
+        this.justUpped = false;
+      }
+
+      await this.playSoundPromise(xx);
+
+      //Player X Requieres callout
+      if ((this.s1_hatfinish ||this.s2_hatfinish) && this.soundStatusCl) {
+        await this.triggerRequiereCallout();
+        let points = 0;
+        if (this.turn_s1 || !this.turn_s1 && this.anzahlSpieler == 1) points = this.s1_punkte; else points = this.s2_punkte;
+        this.requiereNumberCallout.src = "../assets/" + points + ".wav";
+        await this.triggerRequiereNumberCallout();
+      }
    } else {
     this.falscheEingabe();
    }
@@ -246,6 +298,8 @@ export class ZahleneingabeComponent implements OnInit {
     this.s2_name = x[2];
     this.textUnten = x[3];
     this.startPunkte = x[4];
+    this.s1_punkte = this.startPunkte;
+    this.s2_punkte = this.startPunkte;
     this.maxSets = x[5];
     this.maxLegs = x[6];
     this.setSoundStatus(true);
